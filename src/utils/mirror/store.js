@@ -5,24 +5,6 @@ import {
   compose
 } from 'redux'
 
-const LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
-
-const initialState = {
-  location: null
-};
-
-function routerReducer() {
-  const state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  const _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-    type = _ref.type,
-    payload = _ref.payload;
-  if (type === LOCATION_CHANGE) {
-    return { ...state, ...{ location: payload } };
-  }
-  return state;
-}
-
-
 import createMiddleware from './middleware'
 import routerMiddleware from './routerMiddleware'
 
@@ -72,7 +54,6 @@ function createReducer(models, reducers) {
   return combineReducers({
     ...reducers,
     ...modelReducers,
-    routing: routerReducer
   })
 
 }
